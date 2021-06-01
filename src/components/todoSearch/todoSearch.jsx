@@ -3,17 +3,22 @@ import './todoSearch.css';
 
 export default class TodoSearch extends Component {
 
+    state = {
+        letter: ''
+    }
+    onSearch = (e) => {
+        const letter = e.target.value;
+        this.setState({ letter });
+        this.props.onSearch(letter);
+    }
+
     render() {
-        const searchText = 'search something';
-        const searchStyle = {
-            fontSize: '22px'
-        }
+
         return (
-            <input
-                type="text"
-                placeholder={searchText}
-                style={searchStyle}
-            />
+            <input type='text'
+                placeholder='search'
+                value={this.state.letter}
+                onChange={this.onSearch} />
         )
     }
 }

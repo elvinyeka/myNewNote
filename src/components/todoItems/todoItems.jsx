@@ -7,13 +7,15 @@ import './todoItems.css';
 export default class TodoItems extends Component {
 
     render() {
-        const { todo, onDeleteClick } = this.props;
+        const { todo, onDeleteClick, doneTodo, doneImportant } = this.props;
         const element = todo.map((item) => {
             const { id, ...itemProps } = item
             return (
                 <li key={item.id} className="list-group-item">
                     <TodoItem {...itemProps}
-                        onDeleteClick={() => onDeleteClick(id)} />
+                        onDeleteClick={() => onDeleteClick(id)}
+                        doneTodo={() => doneTodo(id)}
+                        doneImportant={() => doneImportant(id)} />
                 </li>
             )
         });

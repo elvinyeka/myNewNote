@@ -3,31 +3,12 @@ import './todoItem.css';
 
 
 export default class TodoItem extends Component {
-    state = {
-        done: false,
-        important: false
-    }
 
-    onTextClick = () => {
-        this.setState(({ done }) => {
-            return {
-                done: !done
-            }
-        })
-    }
-
-    onImportantClick = () => {
-        this.setState(({ important }) => {
-            return {
-                important: !important
-            }
-        })
-    }
 
     render() {
 
-        const { label, onDeleteClick } = this.props;
-        const { done, important } = this.state;
+        const { label, onDeleteClick, doneImportant, doneTodo, done, important } = this.props;
+
 
         let classNames = 'todo';
         if (done) {
@@ -42,7 +23,7 @@ export default class TodoItem extends Component {
                 <span
                     className={classNames}
 
-                    onClick={this.onTextClick}>
+                    onClick={doneTodo}>
                     {label}
                 </span>
                 <div>
@@ -50,7 +31,7 @@ export default class TodoItem extends Component {
                         onClick={onDeleteClick}>Sil</button>
                     <button
                         className="btn btn-success"
-                        onClick={this.onImportantClick}>!</button>
+                        onClick={doneImportant}>!</button>
                 </div>
             </div>
 
